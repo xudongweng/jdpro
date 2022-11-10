@@ -29,4 +29,4 @@ jobs:
     - run: npm install got
     - run: npm install three --save-dev
     - run: npm run build --if-present
-    - run: npm 
+    - run: node -v 
