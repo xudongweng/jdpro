@@ -32,12 +32,13 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm install got
-    - run: npm png-js
-    - run: npm jsdom
-    - run: npm ws
-    - run: npm run build --if-present
-    - run: node -v
+    - run: |
+        npm install got
+        npm install png-js
+        npm install jsdom
+        npm install ws
+        npm run build --if-present
+        node -v
     
     - name: '运行 【京豆变动通知】'
       run: node jd_bean_change.js
