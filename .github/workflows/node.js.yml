@@ -17,9 +17,15 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
+      
     steps:
+    - name: Cache node_modules
+      uses: actions/cache@v1
+      env:
+        cache-name: cache-node-modules
+      with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }}
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
@@ -30,3 +36,5 @@ jobs:
     - run: npm install three --save-dev
     - run: npm run build --if-present
     - run: node -v 
+    
+    
