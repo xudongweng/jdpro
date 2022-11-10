@@ -33,8 +33,25 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm install got
-    - run: npm install three --save-dev
     - run: npm run build --if-present
-    - run: node -v 
+    - run: node -v
     
+    - name: '运行 【京豆变动通知】'
+      run: node jd_bean_change.js
+      env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER }}
+          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+          QYWX_KEY: ${{ secrets.QYWX_KEY }}
+          QYWX_AM: ${{ secrets.QYWX_AM }}
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+          JD_USER_AGENT: ${{ secrets.JD_USER_AGENT }}
     
